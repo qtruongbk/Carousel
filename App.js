@@ -47,15 +47,15 @@ export default function App() {
         decelerationRate="fast"
         horizontal
         showsHorizontalScrollIndicator={false}
-        onScrollEndDrag={(data) => {
-          if (data.nativeEvent.contentOffset.x < -50) {
+        onScrollEndDrag={(data) => {console.log(data);return
+          if (data.nativeEvent.contentOffset.x >50) {
             getDataFromAPI().then(async data => {
               let dl = data.results[0].user;
               await setPerson(dl);
               await showInfoPerson("people", dl.name.first + " " + dl.name.last)
             })
           }
-          if (data.nativeEvent.contentOffset.x > 50) {
+          if (data.nativeEvent.contentOffset.x <-50) {
             let myFavourite;
             AsyncStorage.getItem("favourite").then(fav => {
               myFavourite = fav;
