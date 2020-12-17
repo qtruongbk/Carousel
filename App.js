@@ -43,11 +43,12 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar />
       <ScrollView
         decelerationRate="fast"
         horizontal
         showsHorizontalScrollIndicator={false}
-        onScrollEndDrag={(data) => {console.log(data);return
+        onScrollEndDrag={(data) => {
           if (data.nativeEvent.contentOffset.x >50) {
             getDataFromAPI().then(async data => {
               let dl = data.results[0].user;
